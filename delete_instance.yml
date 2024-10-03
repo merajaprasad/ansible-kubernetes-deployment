@@ -1,0 +1,20 @@
+---
+- name: deleting ec2 instances
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    region: "us-east-1"
+
+  tasks:
+    - name: delete instances 
+      amazon.aws.ec2_instance:
+        name: "{{item.name}}"
+        region: "{{region}}"
+        state: absent
+        aws_access_key: "{{aws_access_key}}"
+        aws_secret_key: "{{aws_secret_key}}"
+
+      loop:
+        - { name: "Kubernetes-Master" }
+        - { name: "Kubernetes-Node" }

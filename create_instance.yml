@@ -1,0 +1,29 @@
+---
+- name: creating ec2 instances
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  vars:
+    instance_type: "t2.medium"
+    region: "us-east-1"
+
+  tasks:
+    - name: create instances with public IP address
+      amazon.aws.ec2_instance:
+        name: "{{item.name}}"
+        key_name: "kubernetes"
+        instance_type: "{{instance_type}}"
+        region: "{{region}}"
+        security_group: launch-wizard-1
+        network_interfaces:
+          - assign_public_ip: true
+        image_id: "{{item.image}}"
+        tags:
+          environment: "{{item.name}}"
+
+        aws_access_key: "{{aws_access_key}}"
+        aws_secret_key: "{{aws_secret_key}}"
+
+      loop:
+        - { image: "ami-005fc0f236362e99f", name: "Kubernetes-Master"}
+        - { image: "ami-005fc0f236362e99f", name: "Kubernetes-Node"}

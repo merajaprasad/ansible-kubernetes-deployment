@@ -1,0 +1,5 @@
+#ignore password
+group_vars/
+vault.pass
+kubernetes.pem
+
