@@ -1,18 +1,18 @@
 ---
-- name: Initialize Kubernetes Master
+- name: Join Managed nodes
   hosts: node
   become: yes
   gather_facts: yes
   tasks:
     - name: copying join-node.sh file
       ansible.builtin.copy:
-        src: /home/rp/ansible/ansible-kubernetes-deployment/join-node.sh
+        src: /home/$USER/ansible-kubernetes-deployment/join-node.sh
         dest: /root/
         mode: '0700'
-      notify: 
-        - Executing shell script
+      notify:
+        - Executing join-node.sh script
 
-  handlers: 
-    - name: Executing shell script
+  handlers:
+    - name: Executing join-node.sh script
       ansible.builtin.shell: /root/join-node.sh
       become: yes
