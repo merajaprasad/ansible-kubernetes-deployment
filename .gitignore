@@ -1,5 +1,5 @@
-#ignore password
+#ignore password Files
 group_vars/
 vault.pass
-kubernetes.pem
+*.pem
 
