@@ -100,11 +100,18 @@ ssh-copy-id -f "-o IdentityFile <path-of-pem-key>/<keypair-name.pem>" ubuntu@<in
 ssh ubuntu@<instance-public-ip>
 ```
 
-### Execute playbooks
+## Execute playbooks
 Now go inside ansible-kubernetes-deployment directory and Execute all the ansible playbook using below command.
 ```
 ansible-playbook install_softwares.yml -i inventory.ini --vault-password-file vault.pass
 ansible-playbook initialize_master.yml -i inventory.ini --vault-password-file vault.pass
+```
+now run below command to copy the updated file into your system
+```
+scp -i <keypair-name.pem> ubuntu@<instance-public-ip>:/home/ubuntu/join-node.sh ./join-node.sh
+```
+```
+ansible-playbook join_node.yml -i inventory.ini --vault-password-file vault.pass
 ansible-playbook install_docker.yml -i inventory.ini --vault-password-file vault.pass
 ```
 ### Join command
