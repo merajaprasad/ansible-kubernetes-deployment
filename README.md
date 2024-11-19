@@ -7,6 +7,27 @@ This repo contain the ansible playbook and shell script to create Kubernetes Clu
 - Aws IAM user access and secret key
 - Aws key-pair
 
+## Install Ansible
+Update system and install dependency 
+```
+sudo apt-get update -y
+sudo apt install software-properties-common -y
+```
+Add repo via PPA
+```
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install python3
+sudo apt install ansible -y
+sudo apt install ansible-core -y
+```
+Install ```pip```,```boto3```, and ```ansible-galaxy``` if not present in system.
+```
+apt install python3-pip
+sudo apt-get install python3-boto3
+ansible-galaxy collection list
+ansible-galaxy collection install amazon.aws
+```
+---
 ### Git Checkout
 ```
 git clone https://github.com/merajaprasad/ansible-kubernetes-deployment.git
@@ -64,8 +85,8 @@ ansible-playbook <file-name>.yml --vault-password-file vault.pass
 ansible-playbook <file-name>.yml --vault-password-file vault.pass --check
 ```
 ### Set Password Less Authentication
+Run below command on local system
 ```
-# on local system
 ssh-keygen
 ssh-copy-id -f "-o IdentityFile <PATH-TO-PEM-FILE>" ubuntu@<INSTANCE-PUBLIC-IP>
 
