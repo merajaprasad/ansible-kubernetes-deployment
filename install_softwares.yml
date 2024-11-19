@@ -6,7 +6,7 @@
   tasks:
     - name: Copying Software Installation file
       ansible.builtin.copy:
-        src: /home/jenkins/ansible-all/install-softwares.sh
+        src: /home/$USER/ansible-kubernetes-deployment/install-softwares.sh
         dest: /root/
         mode: '0700'
       notify: 
