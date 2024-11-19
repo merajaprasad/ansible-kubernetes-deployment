@@ -94,10 +94,10 @@ Now check in aws console, whether the Instances got created or Not. then copy th
 Run below command on local system
 ```
 ssh-keygen
-ssh-copy-id -f "-o IdentityFile <path-of-pem-key>/<keypair-name.pem>" ubuntu@<INSTANCE-PUBLIC-IP>
+ssh-copy-id -f "-o IdentityFile <path-of-pem-key>/<keypair-name.pem>" ubuntu@<instance-public-ip>
 
 # now connect with ssh
-ssh ubuntu@<INSTANCE-PUBLIC-IP>
+ssh ubuntu@<instance-public-ip>
 ```
 
 ### Execute playbooks
