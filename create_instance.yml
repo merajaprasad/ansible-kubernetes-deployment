@@ -1,5 +1,5 @@
 ---
-- name: creating ec2 instances
+- name: Create EC2 Instances
   hosts: localhost
   connection: local
   gather_facts: yes
@@ -8,13 +8,13 @@
     region: "us-east-1"
 
   tasks:
-    - name: create instances with public IP address
+    - name: creating instances with public IP address
       amazon.aws.ec2_instance:
         name: "{{item.name}}"
         key_name: "kubernetes"
         instance_type: "{{instance_type}}"
         region: "{{region}}"
-        security_group: launch-wizard-1
+        security_group: default
         network_interfaces:
           - assign_public_ip: true
         image_id: "{{item.image}}"
