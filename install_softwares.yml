@@ -4,15 +4,15 @@
   become: yes
   gather_facts: yes
   tasks:
-    - name: copy script.sh file
+    - name: Copying Software Installation file
       ansible.builtin.copy:
         src: /home/jenkins/ansible-all/install-softwares.sh
         dest: /root/
         mode: '0700'
       notify: 
-        - Executing shell script
+        - Executing Software Installation script
 
   handlers: 
-    - name: Executing shell script
+    - name: Executing Software Installation script
       ansible.builtin.shell: /root/install-softwares.sh
       become: yes
