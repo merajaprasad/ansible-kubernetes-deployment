@@ -31,3 +31,9 @@ escaped_new_command=$(printf '%s\n' "$NEW_JOIN_TOKEN --v=5" | sed 's/[&/\]/\\&/g
 sed -i "s|$escaped_old_command|$escaped_new_command|g" join-node.sh
 
 echo "The join token has been updated successfully in node-join.sh"
+
+# copy file from /root/ to /home/ubuntu/ user
+sudo cp /root/join-node.sh /home/ubuntu/
+sudo chown ubuntu:ubuntu /home/ubuntu/join-node.sh
+
+
