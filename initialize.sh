@@ -23,7 +23,11 @@ OLD_JOIN_COMMAND=$(grep "^kubeadm join" node-join.sh)
 echo "Old Join Command:"
 echo "$OLD_JOIN_COMMAND"
 
+# Escape special characters from the commands
+escaped_old_command=$(printf '%s\n' "$OLD_JOIN_COMMAND" | sed 's/[&/\]/\\&/g')
+escaped_new_command=$(printf '%s\n' "$NEW_JOIN_TOKEN --v=5" | sed 's/[&/\]/\\&/g')
+
 # Replced with New token
-sed -i "s/$OLD_JOIN_COMMAND/$NEW_JOIN_TOKEN --v=5/g" join-node.sh
+sed -i "s|$escaped_old_command|$escaped_new_command|g" join-node.sh
 
 echo "The join token has been updated successfully in node-join.sh"
