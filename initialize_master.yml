@@ -4,15 +4,18 @@
   become: yes
   gather_facts: yes
   tasks:
-    - name: copying initialize.sh file to Remote System
+    - name: copying initialize.sh file
       ansible.builtin.copy:
-        src: /home/jenkins/ansible-all/initialize.sh
+        src: "/home/rp/ansible/ansible-kubernetes-deployment/{{ item }}"
         dest: /root/
         mode: '0700'
+      loop:
+        - initialize.sh
+        - join-node.sh
       notify: 
-        - Executing Initialization script
+        - Executing shell script
 
   handlers: 
-    - name: Executing Initialization script
+    - name: Executing shell script
       ansible.builtin.shell: /root/initialize.sh
       become: yes
