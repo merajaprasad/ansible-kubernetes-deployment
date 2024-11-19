@@ -80,10 +80,16 @@ copy below ansible playbook file and change required details as per your aws acc
 
 ```
 ### Execute above playbook using below command
+Run below to validate or dry run the playbook
 ```
-ansible-playbook <file-name>.yml --vault-password-file vault.pass
 ansible-playbook <file-name>.yml --vault-password-file vault.pass --check
 ```
+Execute below command to Create Instances
+```
+ansible-playbook <file-name>.yml --vault-password-file vault.pass
+```
+Now check in aws console, whether the Instances got created or Not. then copy the public IP address and paste in Inventory.ini file.
+
 ### Set Password Less Authentication
 Run below command on local system
 ```
