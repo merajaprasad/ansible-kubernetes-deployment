@@ -105,6 +105,7 @@ Now go inside ansible-kubernetes-deployment directory and Execute all the ansibl
 ```
 ansible-playbook install_softwares.yml -i inventory.ini --vault-password-file vault.pass
 ansible-playbook initialize_master.yml -i inventory.ini --vault-password-file vault.pass
+ansible-playbook install_docker.yml -i inventory.ini --vault-password-file vault.pass
 ```
 ### Join command
 Run below command on Kubernetes-Master
