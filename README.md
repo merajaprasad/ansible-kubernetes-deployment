@@ -25,7 +25,7 @@ ansible-vault edit group_vars/all/pass.yml --vault-password-file vault.pass
 ```
 
 ### Create Instances
-copy below ansible playbook file and change required details as per your aws account, pem-key, region, security-group, and image-id.
+copy below ansible playbook file and change required details as per your aws account, ```pem-key```, ```region```, ```security-group```, and ```image-id```.
 ```
 ---
 - name: creating ec2 instances
