@@ -6,7 +6,7 @@
   tasks:
     - name: copying install-docker.sh file to Remote System
       ansible.builtin.copy:
-        src: /home/jenkins/ansible-all/install-docker.sh
+        src: /home/$USER/ansible-kubernetes-deployment/install-docker.sh
         dest: /root/
         mode: '0700'
       notify: 
