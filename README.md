@@ -101,9 +101,18 @@ ssh ubuntu@<INSTANCE-PUBLIC-IP>
 ```
 
 ### Execute playbooks
-Now Execute all the ansible file using below command.
+Now go inside ansible-kubernetes-deployment directory and Execute all the ansible playbook using below command.
 ```
-ansible-playbook <yaml-file> -i inventory.ini --vault-password-file vault.pass
+ansible-playbook install_softwares.yml -i inventory.ini --vault-password-file vault.pass
+ansible-playbook initialize_master.yml -i inventory.ini --vault-password-file vault.pass
 ```
-
+### Join command
+Run below command on Kubernetes-Master
+```
+kubeadm token create --print-join-command
+```
+Run below command on Kubernetes-Node
+```
+<join-command> --v=5
+```
 ---
