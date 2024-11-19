@@ -1,18 +1,18 @@
 ---
-- name: Initialize Kubernetes Master
+- name: Install Docker software
   hosts: all
   become: yes
   gather_facts: yes
   tasks:
-    - name: copying install-docker.sh file
+    - name: copying install-docker.sh file to Remote System
       ansible.builtin.copy:
         src: /home/jenkins/ansible-all/install-docker.sh
         dest: /root/
         mode: '0700'
       notify: 
-        - Executing shell script
+        - Executing install-docker.sh script
 
   handlers: 
-    - name: Executing shell script
+    - name: Executing install-docker.sh script
       ansible.builtin.shell: /root/install-docker.sh
       become: yes
